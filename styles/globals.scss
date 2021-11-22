@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  scroll-behavior: smooth;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+
+    @media (max-width: 768px) {
+      width: 5.5px;
+      height: 5.5px;
+    }
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--gray-solid);
+
+    &:hover {
+      background: var(--light-200-gray-solid);
+    }
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--white-solid);
+  }
+}
+
+:root {
+  //Solid Colors
+  --black-solid: #1a1a1f;
+  --cian-solid: #2ec4b6;
+  --white-solid: #ffffff;
+  --light-gray-solid: #eeeeee;
+
+  //Solid with Transparency
+  --black--transparency: rgba(26, 26, 31, 0.975);
+
+  //Gradients
+  --module-gradient: linear-gradient(180deg, rgba(26, 26, 31, 0) 0%, rgba(26, 26, 31, 0.9) 45%);
+}
+
+@media (max-width: 1080px) {
+  html {
+    font-size: 93.75%;
+  }
+}
+
+@media (max-width: 720px) {
+  html {
+    font-size: 87.5%;
+  }
+}
+
+body {
+  background: var(--white-solid);
+}
+
+body,
+input,
+textarea,
+button,
+select,
+option {
+  font: 500 1rem Poppins, sans-serif;
+  color: var(--black-solid);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+  font-family: Poppins, sans-serif;
+  color: var(--blue-solid);
+}
+
+h1 {
+  font-weight: 600;
+  letter-spacing: -1.5px;
+  font-size: 2rem;
+}
+
+h2 {
+  font-weight: 600;
+  letter-spacing: -1px;
+  font-size: 1.5rem;
+}
+
+button {
+  outline: none;
+  border: none;
+}
+
+a {
+  outline: none;
+  border: none;
+}

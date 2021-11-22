@@ -1,0 +1,118 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 2;
+    left: 2rem;
+    bottom: 2rem;
+
+    @media (max-width: 925px) {
+      top: 2rem;
+      bottom: auto;
+      left: auto;
+      transform: scale(0.8);
+    }
+  }
+
+  .main {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 925px) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .left {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--light-gray-solid);
+      padding: 2rem;
+
+      @media (max-width: 925px) {
+        height: 200px;
+      }
+    }
+
+    .right {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: var(--white-solid);
+
+      .content {
+        width: 100%;
+        max-width: 350px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        gap: 3rem;
+        padding: 2rem;
+
+        @media (max-width: 925px) {
+          position: absolute;
+        }
+
+        .welcome {
+          h1 {
+            font-weight: 700;
+            font-size: 2.75rem;
+            line-height: 2.75rem;
+            color: var(--cian-solid);
+          }
+        }
+
+        .form {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          gap: 3rem;
+
+          div {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+
+        .forgotPassword {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          button {
+            background: transparent;
+            letter-spacing: -0.5px;
+            color: var(--cian-solid);
+            font-size: 0.85rem;
+            box-shadow: none;
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+}
