@@ -14,7 +14,7 @@ export default function Home() {
   useEffect(() => {
     typeof window !== 'undefined' && import('@lottiefiles/lottie-player')
   }, [])
-  
+
   function handleOnSubmit() {
     console.log('submit')
   }
@@ -31,6 +31,7 @@ export default function Home() {
           width={150}
           height={25}
           objectFit={'contain'}
+          quality={50}
         />
       </div>
       <main className={styles.main}>
@@ -51,6 +52,7 @@ export default function Home() {
               width={50}
               height={50}
               objectFit={'contain'}
+              quality={50}
             />
             <div className={styles.welcome}>
               <h2>Seja bem-vindo(a) ao</h2>
