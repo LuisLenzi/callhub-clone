@@ -60,7 +60,6 @@ export default function Input({ name, type, label }: InputProps) {
             ref={inputRef}
             autoComplete="off"
             variant="standard"
-            id="standard-basic"
           />
         </Container>
       )}
@@ -72,7 +71,6 @@ export default function Input({ name, type, label }: InputProps) {
             label={label}
             autoComplete="off"
             variant="standard"
-            id="standard-basic"
             type={showPassword ? 'text' : 'password'}
           />
           <IconButton onClick={togglePassword}>

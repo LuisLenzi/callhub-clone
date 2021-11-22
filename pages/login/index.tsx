@@ -8,9 +8,13 @@ import styles from './styles.module.scss'
 import { BiRightArrowAlt } from 'react-icons/bi'
 import { FiKey } from 'react-icons/fi'
 
-import('@lottiefiles/lottie-player')
+import { useEffect } from 'react'
 
 export default function Home() {
+  useEffect(() => {
+    typeof window !== 'undefined' && import('@lottiefiles/lottie-player')
+  }, [])
+  
   function handleOnSubmit() {
     console.log('submit')
   }
