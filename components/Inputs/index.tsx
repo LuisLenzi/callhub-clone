@@ -73,7 +73,7 @@ export default function Input({ name, type, label }: InputProps) {
             variant="standard"
             type={showPassword ? 'text' : 'password'}
           />
-          <IconButton onClick={togglePassword}>
+          <IconButton name="passwordView" onClick={togglePassword}>
             {!isActive ? (
               <FiEye cursor="pointer" size={18} />
             ) : (

@@ -61,12 +61,12 @@ export default function Home() {
             <Form className={styles.form} onSubmit={handleOnSubmit}>
               <Input name="email" type="default" label="E-mail" />
               <Input name="password" type="password" label="Senha" />
-              <Button>
+              <Button name="loginButton">
                 Realizar Login <BiRightArrowAlt size={22} />
               </Button>
             </Form>
             <div className={styles.forgotPassword}>
-              <Button>
+              <Button name="forgotPasswordButton">
                 Esqueci minha senha <FiKey size={16} />
               </Button>
             </div>
