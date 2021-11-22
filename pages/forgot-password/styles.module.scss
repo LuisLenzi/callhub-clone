@@ -27,7 +27,7 @@
       top: 2rem;
       bottom: auto;
       left: 1rem;
-      transform: scale(0.6);
+      transform: scale(0.5);
     }
   }
 
@@ -45,24 +45,25 @@
       flex-direction: column;
     }
 
-    .left {
+    .right {
       width: 100%;
       height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: var(--light-gray-solid);
       padding: 2rem;
+      background: var(--light-gray-solid);
 
       @media (max-width: 925px) {
+        order: 1;
         background: var(--white-solid);
         position: absolute;
-        opacity: 0.125;
+        opacity: 0.05;
         height: 100vh;
       }
     }
 
-    .right {
+    .left {
       width: 100%;
       height: 100%;
       display: flex;
@@ -70,6 +71,10 @@
       align-items: center;
       flex-direction: column;
       background: var(--white-solid);
+
+      @media (max-width: 925px) {
+        order: 2;
+      }
 
       .content {
         width: 100%;
@@ -80,12 +85,23 @@
         flex-direction: column;
         gap: 3rem;
         padding: 2rem;
+        z-index: 2;
 
         @media (max-width: 925px) {
           position: absolute;
         }
 
         .welcome {
+          gap: 1rem;
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          flex-direction: column;
+
+          p {
+            line-height: 1rem;
+            letter-spacing: -0.5px;
+          }
           h1 {
             font-weight: 700;
             font-size: 2.75rem;
@@ -110,7 +126,7 @@
           }
         }
 
-        .forgotPassword {
+        .backToLogin {
           width: 100%;
           display: flex;
           align-items: center;

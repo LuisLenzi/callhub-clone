@@ -8,8 +8,17 @@ export default function Home() {
         <title>Dashboard | Callhub</title>
       </Head>
 
+      <section>
+        <h1>Left Bar</h1>
+      </section>
+      
       <main className={styles.main}>
-        <h3>Hello</h3>
+        <header>
+          <h3>Header</h3>
+        </header>
+        <section>
+          <h1>Main</h1>
+        </section>
       </main>
     </div>
   )

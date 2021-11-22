@@ -1,7 +1,7 @@
 import { Form } from '@unform/web'
 
-import Head from 'next/head'
 import Link from 'next/link'
+import Head from 'next/head'
 import Image from 'next/image'
 import Router from 'next/router'
 
@@ -9,8 +9,7 @@ import Button from '../../components/Button'
 import Input from '../../components/Inputs'
 import styles from './styles.module.scss'
 
-import { BiRightArrowAlt } from 'react-icons/bi'
-import { FiKey } from 'react-icons/fi'
+import { BiRightArrowAlt, BiLeftArrowAlt } from 'react-icons/bi'
 
 import { useEffect } from 'react'
 
@@ -26,9 +25,8 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Login | Callhub</title>
+        <title>Esqueci a Senha | Callhub</title>
       </Head>
-
       <div className={styles.image}>
         <Image
           src={'/assets/png/devlean.png'}
@@ -41,15 +39,6 @@ export default function Home() {
       </div>
       <main className={styles.main}>
         <section className={styles.left}>
-          <lottie-player
-            id="firstLottie"
-            loop
-            autoplay
-            src="https://assets2.lottiefiles.com/packages/lf20_gbyxyhzy.json"
-            style={{ width: '475px', height: '475px' }}
-          />
-        </section>
-        <section className={styles.right}>
           <div className={styles.content}>
             <Image
               src={'/assets/png/logo192.png'}
@@ -60,24 +49,34 @@ export default function Home() {
               quality={50}
             />
             <div className={styles.welcome}>
-              <h2>Seja bem-vindo(a) ao</h2>
-              <h1>Callhub</h1>
+              <h2>Não se preocupe,</h2>
+              <p>Nós iremos te enviar uma mensagem em seu</p>
+              <h1>E-mail</h1>
             </div>
             <Form className={styles.form} onSubmit={handleOnSubmit}>
               <Input name="email" type="default" label="E-mail" />
-              <Input name="password" type="password" label="Senha" />
               <Button name="loginButton">
-                Realizar Login <BiRightArrowAlt size={22} />
+                Enviar mensagem <BiRightArrowAlt size={22} />
               </Button>
             </Form>
-            <div className={styles.forgotPassword}>
-              <Link href={'/forgot-password'} passHref>
-                <Button name="forgotPasswordButton">
-                  Esqueci minha senha <FiKey size={16} />
+            <div className={styles.backToLogin}>
+              <Link href={'/login'} passHref>
+                <Button name="backToLogin">
+                  <BiLeftArrowAlt size={22} /> Voltar para o Login
                 </Button>
               </Link>
             </div>
           </div>
+        </section>
+        <section className={styles.right}>
+          <lottie-player
+            id="firstLottie"
+            loop
+            autoplay
+            speed={0.75}
+            src="https://assets5.lottiefiles.com/packages/lf20_bz5y4quo.json"
+            style={{ width: '475px', height: '475px' }}
+          />
         </section>
       </main>
     </div>
