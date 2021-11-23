@@ -55,13 +55,13 @@ export default function Home() {
             </div>
             <Form className={styles.form} onSubmit={handleOnSubmit}>
               <Input name="email" type="default" label="E-mail" />
-              <Button name="loginButton">
+              <Button type="button" name="loginButton">
                 Enviar mensagem <BiRightArrowAlt size={22} />
               </Button>
             </Form>
             <div className={styles.backToLogin}>
               <Link href={'/login'} passHref>
-                <Button name="backToLogin">
+                <Button type="button" name="backToLogin">
                   <BiLeftArrowAlt size={22} /> Voltar para o Login
                 </Button>
               </Link>

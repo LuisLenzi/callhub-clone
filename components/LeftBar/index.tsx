@@ -1,62 +1,108 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from '../Button'
 
 import Image from 'next/image'
 
 import styles from './styles.module.scss'
+import {
+  AiOutlineCoffee,
+  AiOutlineComment,
+  AiOutlineFileAdd,
+  AiOutlineFileText,
+  AiOutlineInbox,
+  AiOutlineRise,
+} from 'react-icons/ai'
+
+interface LeftBarInterface {
+  id: number
+  title: string
+  options: [
+    {
+      id: number
+      icon: string
+      option: string
+    },
+  ]
+}
 
 interface LeftBarProps {
   show?: boolean
+  leftBarObject: LeftBarInterface[]
 }
 
-export default function LeftBar({ show }: LeftBarProps) {
+export default function LeftBar({ show, leftBarObject }: LeftBarProps) {
+  const [currentButton, setCurrentButton] = useState(0)
+
+  function handleClick(id: number) {
+    currentButton !== id ? setCurrentButton(id) : setCurrentButton(0)
+  }
+
+  const activeButton = {
+    background: 'var(--cian-solid)',
+    color: 'var(--white-solid)',
+  }
+
+  function HandleValidateIcon({ option }: { option: string }) {
+    switch (option) {
+      case 'AiOutlineFileText':
+        return <AiOutlineFileText size={20} />
+      case 'AiOutlineFileAdd':
+        return <AiOutlineFileAdd size={20} />
+      case 'AiOutlineCoffee':
+        return <AiOutlineCoffee size={20} />
+      case 'AiOutlineComment':
+        return <AiOutlineComment size={20} />
+      case 'AiOutlineInbox':
+        return <AiOutlineInbox size={20} />
+      case 'AiOutlineRise':
+        return <AiOutlineRise size={20} />
+      default:
+        break
+    }
+    return <></>
+  }
+
   return (
     <>
-      {show && (
+      {!show && (
         <div className={styles.container}>
-          <div>
-            <Image
-              src={'/assets/png/fulllogo.png'}
-              alt={'Logo completa'}
-              width={150}
-              height={25}
-              objectFit={'contain'}
-              quality={50}
-            />
+          <div className={styles.imageBox}>
+            <h1>Callhub</h1>
           </div>
-          <div>
-            <div>
-              <h3>Chamado</h3>
-              <div>
-                <Button>Minhas Ordens de Serviço</Button>
-                <Button>Nova Ordem de Serviço</Button>
-                <Button>Sugerir Desenvolvimento</Button>
-              </div>
-            </div>
-
-            <div>
-              <h3>Ajuda</h3>
-              <div>
-                <Button>Perguntas Frequentes</Button>
-                <Button>Central de Ajuda</Button>
-              </div>
-            </div>
-
-            <div>
-              <h3>Analytics</h3>
-              <div>
-                <Button>Indicadores</Button>
-              </div>
-            </div>
-
-            <div>
-              <h3>Configurações</h3>
-              <div>
-                <Button>Ajustes</Button>
-                <Button>{"TAG'S"}</Button>
-                <Button>{"FAQ'S"}</Button>
-              </div>
-            </div>
+          <div className={styles.content}>
+            {leftBarObject?.map((item) => {
+              return (
+                <div className={styles.item} key={item.id}>
+                  <h3>{item.title.toUpperCase()}</h3>
+                  <div>
+                    {item.options.map((option) => {
+                      return (
+                        <Button
+                          onClick={() => handleClick(option.id)}
+                          key={option.id}
+                          style={
+                            currentButton === option.id ? activeButton : {}
+                          }
+                        >
+                          {<HandleValidateIcon option={option.icon} />}
+                          {option.option}
+                        </Button>
+                      )
+                    })}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+          <div className={styles.devlean}>
+            <Image
+              src={'/assets/png/devlean.png'}
+              alt={'Logo completa'}
+              width={80}
+              height={10}
+              quality={30}
+              objectFit={'contain'}
+            />
           </div>
         </div>
       )}

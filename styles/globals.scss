@@ -16,10 +16,10 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--gray-solid);
+    background: var(--cian-solid);
 
     &:hover {
-      background: var(--light-200-gray-solid);
+    background: var(--cian-light-solid);
     }
   }
 
@@ -32,8 +32,10 @@
   //Solid Colors
   --black-solid: #1a1a1f;
   --cian-solid: #2ec4b6;
+  --cian-light-solid: #90e2da;
   --white-solid: #ffffff;
-  --light-gray-solid: #eeeeee;
+  --light-gray-100-solid: #eeeeee;
+  --light-gray-200-solid: #c9c9c9;
 
   //Solid with Transparency
   --black--transparency: rgba(26, 26, 31, 0.975);

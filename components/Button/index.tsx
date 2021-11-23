@@ -4,9 +4,9 @@ import styles from './styles.module.scss'
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 
-export default function Button({ name, children, ...rest }: ButtonProps) {
+export default function Button({ name, type, children, ...rest }: ButtonProps) {
   return (
-    <button name={name} className={styles.container} type="submit" {...rest}>
+    <button className={styles.container} name={name} type={type} {...rest}>
       {children}
     </button>
   )
