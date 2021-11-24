@@ -52,13 +52,36 @@ export async function LeftBarApi() {
 }
 
 export async function ProfileApi() {
+  const data = {
+    id: 1,
+    userName: 'Luís Lenzi',
+    userFunction: 'Desenvolvedor',
+    userEmail: 'luis.lenzi@devlean.com.br',
+    userImage: 'https://github.com/LuisLenzi.png',
+  }
+
+  return data
+}
+
+export async function NotificationApi() {
   return [
     {
       id: 1,
-      userName: 'Luís Lenzi',
-      userFunction: 'Desenvolvedor',
-      userEmail: 'luis.lenzi@devlean.com.br',
-      userImage: '/assets/png/logo192.png',
+      userOwner: 'Guilherme Cruz',
+      description: 'Dúvida de Desenvolvimento',
+      label: 'Dev',
+    },
+    {
+      id: 2,
+      userOwner: 'Augusto Pereira',
+      description: 'Erro no Chamado',
+      label: 'Erro',
+    },
+    {
+      id: 3,
+      userOwner: 'Gustavo Luciano',
+      description: 'Problema ao Cadastrar',
+      label: 'Aviso',
     },
   ]
 }

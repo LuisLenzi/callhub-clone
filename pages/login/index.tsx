@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Router from 'next/router'
 
-import Button from '../../components/Button'
+import { Button } from '../../components/Button'
 import Input from '../../components/Inputs'
 import styles from './styles.module.scss'
 

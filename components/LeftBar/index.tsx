@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import Button from '../Button'
+import React, { useContext, useState } from 'react'
+import { Button } from '../Button'
 
 import Image from 'next/image'
 
@@ -12,6 +12,7 @@ import {
   AiOutlineInbox,
   AiOutlineRise,
 } from 'react-icons/ai'
+import { Context } from '../../context/Context'
 
 interface LeftBarInterface {
   id: number
@@ -26,11 +27,11 @@ interface LeftBarInterface {
 }
 
 interface LeftBarProps {
-  show?: boolean
   leftBarObject: LeftBarInterface[]
 }
 
-export default function LeftBar({ show, leftBarObject }: LeftBarProps) {
+export default function LeftBarComponent({ leftBarObject }: LeftBarProps) {
+  const { leftBarIsActive } = useContext(Context)
   const [currentButton, setCurrentButton] = useState(0)
 
   function handleClick(id: number) {
@@ -64,7 +65,7 @@ export default function LeftBar({ show, leftBarObject }: LeftBarProps) {
 
   return (
     <>
-      {!show && (
+      {leftBarIsActive && (
         <div className={styles.container}>
           <div className={styles.imageBox}>
             <h1>Callhub</h1>

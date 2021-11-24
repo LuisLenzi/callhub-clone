@@ -35,7 +35,10 @@
   --cian-light-solid: #90e2da;
   --white-solid: #ffffff;
   --light-gray-100-solid: #eeeeee;
-  --light-gray-200-solid: #c9c9c9;
+  --light-gray-200-solid: #dddddd;
+  --light-gray-300-solid: #cccccc;
+  --light-gray-400-solid: #bbbbbb;
+  --light-gray-500-solid: #aaaaaa;
 
   //Solid with Transparency
   --black--transparency: rgba(26, 26, 31, 0.975);
@@ -57,7 +60,7 @@
 }
 
 body {
-  background: var(--white-solid);
+  background: var(--light-gray-100-solid);
 }
 
 body,

@@ -11,7 +11,7 @@ import {
 import styles from './styles.module.scss'
 import { PopOver } from './Popover'
 
-interface ProfileInterface {
+interface NotificationInterface {
   id: number
   userName: string
   userEmail: string
@@ -19,11 +19,13 @@ interface ProfileInterface {
   userFunction: string
 }
 
-interface ProfileProps {
-  profileObject: ProfileInterface
+interface NotificationProps {
+  notificationObject: NotificationInterface
 }
 
-export default function ProfileComponent({ profileObject }: ProfileProps) {
+export default function NotificationComponent({
+  notificationObject,
+}: NotificationProps) {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
   const [openProfile, setOpenProfile] = useState(false)
 
@@ -41,15 +43,15 @@ export default function ProfileComponent({ profileObject }: ProfileProps) {
     <div className={styles.container}>
       <Button name="profile" onClick={handleOpenProfile} type="button">
         <Image
-          src={profileObject.userImage}
-          alt={profileObject.userName}
+          src={notificationObject.userImage}
+          alt={notificationObject.userName}
           width={30}
           height={30}
           quality={30}
           objectFit={'contain'}
           className={styles.image}
         />
-        Olá, {profileObject.userName}
+        Olá, {notificationObject.userName}
         {openProfile ? (
           <MdOutlineKeyboardArrowDown size={20} />
         ) : (
@@ -61,10 +63,10 @@ export default function ProfileComponent({ profileObject }: ProfileProps) {
         open={openProfile}
         anchorEl={anchorEl}
         onClose={() => setOpenProfile(false)}
-        profileObject={profileObject}
+        notificationObject={notificationObject}
       />
     </div>
   )
 }
 
-export const Profile = memo(ProfileComponent)
+export const Profile = memo(NotificationComponent)

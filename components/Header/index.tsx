@@ -1,7 +1,15 @@
-import React from 'react'
+import { Badge } from '@material-ui/core'
+import React, { useContext } from 'react'
 import { AiOutlineMenu } from 'react-icons/ai'
-import { RiRefreshLine } from 'react-icons/ri'
-import Button from '../Button'
+import { FiSettings } from 'react-icons/fi'
+import {
+  MdClose,
+  MdOutlineMenuOpen,
+  MdOutlineNotificationsNone,
+} from 'react-icons/md'
+import { RiMenuUnfoldLine, RiRefreshLine } from 'react-icons/ri'
+import { Context } from '../../context/Context'
+import { Button } from '../Button'
 import { Profile } from '../Profile'
 import { Tooltips } from '../Tooltip'
 
@@ -20,18 +28,27 @@ interface ProfileProps {
 }
 
 export default function Header({ profileObject }: ProfileProps) {
+  const { leftBarIsActive, handleLeftBarActive } = useContext(Context)
+
   return (
-    <div className={styles.header}>
+    <div className={leftBarIsActive ? styles.header : styles.fullWidth}>
       <div className={styles.left}>
         <Tooltips title="Menu" placement="bottom">
           <div>
-            <Button name="menuButton" type="button">
-              <AiOutlineMenu size={22} />
+            <Button
+              onClick={handleLeftBarActive}
+              name="menuButton"
+              type="button"
+            >
+              <RiMenuUnfoldLine
+                className={leftBarIsActive ? '' : styles.open}
+                size={22}
+              />
             </Button>
           </div>
         </Tooltips>
         <Tooltips title="Atualizar página" placement="bottom">
-          <div>
+          <div className={styles.refreshButton}>
             <Button name="refreshButton" type="button">
               <RiRefreshLine size={22} />
             </Button>
@@ -39,17 +56,19 @@ export default function Header({ profileObject }: ProfileProps) {
         </Tooltips>
       </div>
       <div className={styles.right}>
-        <Tooltips title="Menu" placement="bottom">
+        <Tooltips title="Configurações" placement="bottom">
           <div>
-            <Button name="menuButton" type="button">
-              <AiOutlineMenu size={22} />
+            <Button name="settings" type="button">
+              <FiSettings size={22} />
             </Button>
           </div>
         </Tooltips>
-        <Tooltips title="Atualizar página" placement="bottom">
+        <Tooltips title="Notificações" placement="bottom">
           <div>
             <Button name="refreshButton" type="button">
-              <RiRefreshLine size={22} />
+              <Badge color="warning" variant="dot">
+                <MdOutlineNotificationsNone size={22} />
+              </Badge>
             </Button>
           </div>
         </Tooltips>

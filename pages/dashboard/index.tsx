@@ -1,11 +1,17 @@
+import { useContext, useEffect, useState } from 'react'
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
-import LeftBar from '../../components/LeftBar'
+
 import { LeftBarApi, ProfileApi } from '../../services/api'
 
-import styles from './styles.module.scss'
+import LeftBar from '../../components/LeftBar'
 import Header from '../../components/Header'
+import { ChatButton } from '../../components/Chat'
 
+import { Context } from '../../context/Context'
+
+import styles from './styles.module.scss'
+import Loading from '../../components/Loading'
 interface LeftBarInterface {
   id: number
   title: string
@@ -32,6 +38,19 @@ interface LeftBarProps {
 }
 
 export default function Home({ leftBarObject, profileObject }: LeftBarProps) {
+  const [isLoading, setIsLoading] = useState(true)
+  const { leftBarIsActive } = useContext(Context)
+
+  function handleSetIsLoading() {
+    setIsLoading(false)
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      handleSetIsLoading()
+    }, 3000)
+  }, [])
+
   return (
     <div className={styles.container}>
       <Head>
@@ -42,15 +61,14 @@ export default function Home({ leftBarObject, profileObject }: LeftBarProps) {
         <LeftBar leftBarObject={leftBarObject} />
       </section>
 
-      <main className={styles.main}>
+      <ChatButton />
+
+      <main className={leftBarIsActive ? styles.main : styles.fullWidth}>
         <Header profileObject={profileObject} />
-        <section className={styles.content}>
-          <h1>Dashboard</h1>
-          <div>
-            <p>dasdp</p>
-          </div>
-        </section>
+        <section className={styles.content}></section>
       </main>
+
+      <Loading show={isLoading} />
     </div>
   )
 }

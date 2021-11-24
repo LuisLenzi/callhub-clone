@@ -57,7 +57,7 @@
       @media (max-width: 925px) {
         background: var(--white-solid);
         position: absolute;
-        opacity: 0.125;
+        opacity: 0.15;
         height: 100vh;
       }
     }
@@ -73,7 +73,7 @@
 
       .content {
         width: 100%;
-        max-width: 350px;
+        max-width: 375px;
         display: flex;
         align-items: flex-start;
         justify-content: center;
