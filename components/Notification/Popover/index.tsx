@@ -3,28 +3,25 @@ import { Popover } from '@material-ui/core'
 import { Grow } from '@material-ui/core'
 
 import Image from 'next/image'
-import Link from 'next/link'
 
 import styles from './styles.module.scss'
 import { Button } from '../../Button'
 
-import { MdOutlineAttachEmail } from 'react-icons/md'
-import { AiOutlineLogout } from 'react-icons/ai'
 import { HiOutlineExternalLink } from 'react-icons/hi'
 
-interface ProfileInterface {
+interface NotificationInterface {
   id: number
-  userName: string
-  userEmail: string
   userImage: string
-  userFunction: string
+  userOwner: string
+  description: string
+  label: string
 }
 
 interface PopoverProps {
   id: string
   open: boolean
   onClose: () => void
-  notificationObject: ProfileInterface
+  notificationObject: NotificationInterface[]
   anchorEl: HTMLButtonElement | null
 }
 
@@ -49,42 +46,50 @@ function PopoverComponent({
         }}
       >
         <div className={styles.content}>
-          <h1>Perfil</h1>
-          <section className={styles.userInformation}>
-            <Image
-              src={notificationObject.userImage}
-              alt={notificationObject.userName}
-              width={70}
-              height={70}
-              quality={100}
-              objectFit={'contain'}
-              className={styles.image}
-            />
-            <div className={styles.userData}>
-              <h3>{notificationObject.userName}</h3>
-              <p>{notificationObject.userFunction}</p>
-              <div className={styles.userEmail}>
-                <MdOutlineAttachEmail size={18} />
-                <p>{notificationObject.userEmail}</p>
-              </div>
-            </div>
-          </section>
-          <Link href={'/profile'} passHref>
-            <section className={styles.profile}>
-              <Button>
-                <div>
-                  <p>Acessar perfil</p>
-                </div>
-                <HiOutlineExternalLink size={25} />
-              </Button>
-            </section>
-          </Link>
-          <Link href={'/login'} passHref>
+          <section className={styles.notification}>
+            <h1>Notificações</h1>
             <Button>
-              Desconectar
-              <AiOutlineLogout className={styles.disconnect} size={20} />
+              <p>Acessar notificações</p>
+              <HiOutlineExternalLink size={18} />
             </Button>
-          </Link>
+          </section>
+          {notificationObject.slice(0, 3).map((notification) => (
+            <section
+              className={styles.notificationInformation}
+              key={notification.id}
+            >
+              <Image
+                src={notification.userImage}
+                alt={notification.userOwner}
+                width={70}
+                height={70}
+                quality={100}
+                objectFit={'contain'}
+                className={styles.image}
+              />
+              <div className={styles.notificationData}>
+                <h3>{notification.userOwner}</h3>
+                <p>{notification.description}</p>
+                <div>
+                  <label
+                    className={
+                      notification.label === 'Dev'
+                        ? styles.dev
+                        : notification.label === 'Erro'
+                        ? styles.error
+                        : styles.warning
+                    }
+                  >
+                    {notification.label}
+                  </label>
+                  <Button>
+                    <p>Visualizar</p>
+                    <HiOutlineExternalLink size={18} />
+                  </Button>
+                </div>
+              </div>
+            </section>
+          ))}
         </div>
       </Popover>
     </div>

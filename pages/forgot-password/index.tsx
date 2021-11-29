@@ -13,7 +13,7 @@ import { BiRightArrowAlt, BiLeftArrowAlt } from 'react-icons/bi'
 
 import { useEffect } from 'react'
 
-export default function Home() {
+export default function ForgotPassword() {
   useEffect(() => {
     typeof window !== 'undefined' && import('@lottiefiles/lottie-player')
   }, [])

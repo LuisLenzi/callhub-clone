@@ -12,9 +12,9 @@
   justify-content: center;
   border-radius: 50px;
   cursor: pointer;
+  z-index: 2;
 
   &:hover {
-    opacity: 0.85;
     gap: 1rem;
   }
 

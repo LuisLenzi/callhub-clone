@@ -1,16 +1,12 @@
 import { Badge } from '@material-ui/core'
 import React, { useContext } from 'react'
-import { AiOutlineMenu } from 'react-icons/ai'
 import { FiSettings } from 'react-icons/fi'
-import {
-  MdClose,
-  MdOutlineMenuOpen,
-  MdOutlineNotificationsNone,
-} from 'react-icons/md'
+import { MdOutlineNotificationsNone } from 'react-icons/md'
 import { RiMenuUnfoldLine, RiRefreshLine } from 'react-icons/ri'
 import { Context } from '../../context/Context'
 import { Button } from '../Button'
-import { Profile } from '../Profile'
+import { Notification } from '../Notification'
+import { ProfileButton } from '../Profile/ProfileButton'
 import { Tooltips } from '../Tooltip'
 
 import styles from './styles.module.scss'
@@ -23,17 +19,31 @@ interface ProfileInterface {
   userImage: string
 }
 
-interface ProfileProps {
+interface NotificationInterface {
+  id: number
+  userImage: string
+  userOwner: string
+  description: string
+  label: string
+}
+interface HeaderProps {
+  notificationObject: NotificationInterface[]
   profileObject: ProfileInterface
 }
 
-export default function Header({ profileObject }: ProfileProps) {
+export default function Header({
+  profileObject,
+  notificationObject,
+}: HeaderProps) {
   const { leftBarIsActive, handleLeftBarActive } = useContext(Context)
 
   return (
     <div className={leftBarIsActive ? styles.header : styles.fullWidth}>
       <div className={styles.left}>
-        <Tooltips title="Menu" placement="bottom">
+        <Tooltips
+          title={leftBarIsActive ? 'Ocultar Menu' : 'Visualizar Menu'}
+          placement="right"
+        >
           <div>
             <Button
               onClick={handleLeftBarActive}
@@ -47,13 +57,6 @@ export default function Header({ profileObject }: ProfileProps) {
             </Button>
           </div>
         </Tooltips>
-        <Tooltips title="Atualizar página" placement="bottom">
-          <div className={styles.refreshButton}>
-            <Button name="refreshButton" type="button">
-              <RiRefreshLine size={22} />
-            </Button>
-          </div>
-        </Tooltips>
       </div>
       <div className={styles.right}>
         <Tooltips title="Configurações" placement="bottom">
@@ -63,16 +66,10 @@ export default function Header({ profileObject }: ProfileProps) {
             </Button>
           </div>
         </Tooltips>
-        <Tooltips title="Notificações" placement="bottom">
-          <div>
-            <Button name="refreshButton" type="button">
-              <Badge color="warning" variant="dot">
-                <MdOutlineNotificationsNone size={22} />
-              </Badge>
-            </Button>
-          </div>
-        </Tooltips>
-        <Profile profileObject={profileObject} />
+        {notificationObject && (
+          <Notification notificationObject={notificationObject} />
+        )}
+        {profileObject && <ProfileButton profileObject={profileObject} />}
       </div>
     </div>
   )

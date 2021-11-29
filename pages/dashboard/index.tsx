@@ -1,86 +1,89 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
+
 import Head from 'next/head'
-import { GetStaticProps } from 'next'
-
-import { LeftBarApi, ProfileApi } from '../../services/api'
-
-import LeftBar from '../../components/LeftBar'
-import Header from '../../components/Header'
-import { ChatButton } from '../../components/Chat'
 
 import { Context } from '../../context/Context'
 
+import Main from '../../components/Layouts/main'
+
+import CoinsAPI from '../../services/coins'
+
 import styles from './styles.module.scss'
-import Loading from '../../components/Loading'
-interface LeftBarInterface {
-  id: number
-  title: string
-  options: [
-    {
-      id: number
-      icon: string
-      option: string
-    },
-  ]
-}
+import { GetStaticProps } from 'next'
+import { AiOutlineDollarCircle, AiOutlineEuroCircle } from 'react-icons/ai'
+import { RiBitCoinLine } from 'react-icons/ri'
 
-interface ProfileInterface {
-  id: number
-  userName: string
-  userFunction: string
-  userEmail: string
-  userImage: string
-}
-
-interface LeftBarProps {
-  leftBarObject: LeftBarInterface[]
-  profileObject: ProfileInterface
-}
-
-export default function Home({ leftBarObject, profileObject }: LeftBarProps) {
-  const [isLoading, setIsLoading] = useState(true)
-  const { leftBarIsActive } = useContext(Context)
-
-  function handleSetIsLoading() {
-    setIsLoading(false)
-  }
-
-  useEffect(() => {
-    setTimeout(() => {
-      handleSetIsLoading()
-    }, 3000)
-  }, [])
+export default function Dashboard({ coins }: any) {
+  const { profileObjectData } = useContext(Context)
 
   return (
-    <div className={styles.container}>
+    <Main>
       <Head>
         <title>Dashboard | Callhub</title>
       </Head>
 
-      <section className={styles.leftBar}>
-        <LeftBar leftBarObject={leftBarObject} />
-      </section>
-
-      <ChatButton />
-
-      <main className={leftBarIsActive ? styles.main : styles.fullWidth}>
-        <Header profileObject={profileObject} />
-        <section className={styles.content}></section>
-      </main>
-
-      <Loading show={isLoading} />
-    </div>
+      <div className={styles.container}>
+        <div className={styles.welcome}>
+          <div className={styles.left}>
+            <h1>Hey {profileObjectData?.userName}</h1>
+            <h3>Seja bem vindo(a) ao Callhub</h3>
+          </div>
+          <div className={styles.right} />
+        </div>
+        <div className={styles.coins}>
+          <div className={styles.left}>
+            <AiOutlineDollarCircle className={styles.icon} size={40} />
+            <h3>Dólar - Real</h3>
+            <div>
+              <h1>R$ {coins.USDBRL.high}</h1>
+              <h3>R$ {coins.USDBRL.low}</h3>
+              <p>Porcentagem {coins.USDBRL.pctChange}%</p>
+            </div>
+          </div>
+          <div className={styles.middle}>
+            <AiOutlineEuroCircle className={styles.icon} size={40} />
+            <h3>Euro - Real</h3>
+            <div>
+              <h1>R$ {coins.EURBRL.high}</h1>
+              <h3>R$ {coins.EURBRL.low}</h3>
+              <p>Porcentagem {coins.EURBRL.pctChange}%</p>
+            </div>
+          </div>
+          <div className={styles.right}>
+            <RiBitCoinLine className={styles.icon} size={40} />
+            <h3>Bitcoin - Real</h3>
+            <div>
+              <h1>R$ {coins.BTCBRL.high}</h1>
+              <h3>R$ {coins.BTCBRL.low}</h3>
+              <p>Porcentagem {coins.BTCBRL.pctChange}%</p>
+            </div>
+          </div>
+        </div>
+        <div className={styles.welcome}>
+          <div className={styles.left}>
+            <h1>Hey {profileObjectData?.userName}</h1>
+            <h3>Seja bem vindo(a) ao Callhub</h3>
+          </div>
+          <div className={styles.right} />
+        </div>
+        <div className={styles.welcome}>
+          <div className={styles.left}>
+            <h1>Hey {profileObjectData?.userName}</h1>
+            <h3>Seja bem vindo(a) ao Callhub</h3>
+          </div>
+          <div className={styles.right} />
+        </div>
+      </div>
+    </Main>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const leftBarObject = await LeftBarApi()
-  const profileObject = await ProfileApi()
+  const coins = await CoinsAPI.get('USD-BRL,EUR-BRL,BTC-BRL')
 
   return {
     props: {
-      leftBarObject,
-      profileObject,
+      coins: coins.data,
     },
   }
 }

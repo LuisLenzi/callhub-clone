@@ -2,8 +2,10 @@ import React, { useContext, useState } from 'react'
 import { Button } from '../Button'
 
 import Image from 'next/image'
+import Link from 'next/link'
 
 import styles from './styles.module.scss'
+
 import {
   AiOutlineCoffee,
   AiOutlineComment,
@@ -12,19 +14,8 @@ import {
   AiOutlineInbox,
   AiOutlineRise,
 } from 'react-icons/ai'
-import { Context } from '../../context/Context'
 
-interface LeftBarInterface {
-  id: number
-  title: string
-  options: [
-    {
-      id: number
-      icon: string
-      option: string
-    },
-  ]
-}
+import { Context, LeftBarInterface } from '../../context/Context'
 
 interface LeftBarProps {
   leftBarObject: LeftBarInterface[]
@@ -68,7 +59,9 @@ export default function LeftBarComponent({ leftBarObject }: LeftBarProps) {
       {leftBarIsActive && (
         <div className={styles.container}>
           <div className={styles.imageBox}>
-            <h1>Callhub</h1>
+            <Link href={'/dashboard'} passHref>
+              <h1 className={styles.callhub}>Callhub</h1>
+            </Link>
           </div>
           <div className={styles.content}>
             {leftBarObject?.map((item) => {

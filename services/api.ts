@@ -67,18 +67,42 @@ export async function NotificationApi() {
   return [
     {
       id: 1,
+      userImage: '/assets/png/logo192.png',
       userOwner: 'Guilherme Cruz',
       description: 'Dúvida de Desenvolvimento',
       label: 'Dev',
     },
     {
       id: 2,
+      userImage: 'https://github.com/AugustoHTPereira.png',
       userOwner: 'Augusto Pereira',
       description: 'Erro no Chamado',
       label: 'Erro',
     },
     {
       id: 3,
+      userImage: 'https://github.com/GustavoLucianoMGM.png',
+      userOwner: 'Gustavo Luciano',
+      description: 'Problema ao Cadastrar',
+      label: 'Aviso',
+    },
+    {
+      id: 4,
+      userImage: '/assets/png/logo192.png',
+      userOwner: 'Guilherme Cruz',
+      description: 'Dúvida de Desenvolvimento',
+      label: 'Dev',
+    },
+    {
+      id: 5,
+      userImage: 'https://github.com/AugustoHTPereira.png',
+      userOwner: 'Augusto Pereira',
+      description: 'Erro no Chamado',
+      label: 'Erro',
+    },
+    {
+      id: 6,
+      userImage: 'https://github.com/GustavoLucianoMGM.png',
       userOwner: 'Gustavo Luciano',
       description: 'Problema ao Cadastrar',
       label: 'Aviso',

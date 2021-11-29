@@ -1,16 +1,18 @@
-import { memo } from 'react'
-import { Popover } from '@material-ui/core'
+import { memo, useContext } from 'react'
+
 import { Grow } from '@material-ui/core'
+import { Popover } from '@material-ui/core'
 
 import Image from 'next/image'
 import Link from 'next/link'
 
-import styles from './styles.module.scss'
 import { Button } from '../../Button'
 
+import { IoIosLogOut } from 'react-icons/io'
 import { MdOutlineAttachEmail } from 'react-icons/md'
-import { AiOutlineLogout } from 'react-icons/ai'
 import { HiOutlineExternalLink } from 'react-icons/hi'
+
+import styles from './styles.module.scss'
 
 interface ProfileInterface {
   id: number
@@ -41,15 +43,23 @@ function PopoverComponent({
         id={id}
         open={open}
         onClose={onClose}
-        TransitionComponent={Grow}
         anchorEl={anchorEl}
+        TransitionComponent={Grow}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
         }}
       >
         <div className={styles.content}>
-          <h1>Perfil</h1>
+          <section className={styles.profile}>
+            <h1>Perfil</h1>
+            <Link href={'/profile'} passHref>
+              <Button>
+                <p>Acessar perfil</p>
+                <HiOutlineExternalLink size={18} />
+              </Button>
+            </Link>
+          </section>
           <section className={styles.userInformation}>
             <Image
               src={profileObject.userImage}
@@ -64,25 +74,18 @@ function PopoverComponent({
               <h3>{profileObject.userName}</h3>
               <p>{profileObject.userFunction}</p>
               <div className={styles.userEmail}>
-                <MdOutlineAttachEmail size={18} />
+                <MdOutlineAttachEmail
+                  size={16}
+                  color={'var(--light-gray-500-solid)'}
+                />
                 <p>{profileObject.userEmail}</p>
               </div>
             </div>
           </section>
-          <Link href={'/profile'} passHref>
-            <section className={styles.profile}>
-              <Button>
-                <div>
-                  <p>Acessar perfil</p>
-                </div>
-                <HiOutlineExternalLink size={25} />
-              </Button>
-            </section>
-          </Link>
           <Link href={'/login'} passHref>
             <Button>
               Desconectar
-              <AiOutlineLogout className={styles.disconnect} size={20} />
+              <IoIosLogOut className={styles.disconnect} size={20} />
             </Button>
           </Link>
         </div>

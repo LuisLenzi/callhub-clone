@@ -12,13 +12,7 @@ import styles from './styles.module.scss'
 import { BiRightArrowAlt } from 'react-icons/bi'
 import { FiKey } from 'react-icons/fi'
 
-import { useEffect } from 'react'
-
 export default function Home() {
-  useEffect(() => {
-    typeof window !== 'undefined' && import('@lottiefiles/lottie-player')
-  }, [])
-
   function handleOnSubmit() {
     Router.push('/dashboard')
   }

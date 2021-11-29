@@ -1,6 +1,6 @@
 import React, { memo, useState } from 'react'
 
-import { Button } from '../Button'
+import { Button } from '../../Button'
 import Image from 'next/image'
 
 import {
@@ -9,7 +9,7 @@ import {
 } from 'react-icons/md'
 
 import styles from './styles.module.scss'
-import { PopOver } from './Popover'
+import { PopOver } from '../Popover'
 
 interface ProfileInterface {
   id: number
@@ -67,4 +67,4 @@ export default function ProfileComponent({ profileObject }: ProfileProps) {
   )
 }
 
-export const Profile = memo(ProfileComponent)
+export const ProfileButton = memo(ProfileComponent)

@@ -40,11 +40,11 @@ export default function Input({ name, type, label }: InputProps) {
         <div>
           <input
             name={name}
+            value={value}
             ref={inputRef}
             autoComplete="off"
             type={type === 'password' && !showPassword ? 'password' : 'text'}
             onClick={handleApplyBlur}
-            value={value}
             onBlur={handleDisableBlur}
             onChange={(event) => setValue(event.target.value)}
           />

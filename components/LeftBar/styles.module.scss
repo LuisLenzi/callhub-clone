@@ -18,7 +18,6 @@
   padding: 1.25rem;
   background: var(--white-solid);
   animation: appearFromLeft 0.35s linear;
-  
 
   .imageBox {
     padding: 2rem 0;
@@ -32,6 +31,12 @@
       font-size: 2.75rem;
       line-height: 2.75rem;
       color: var(--cian-solid);
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.025);
+      }
     }
   }
 
