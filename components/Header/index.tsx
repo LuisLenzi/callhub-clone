@@ -1,9 +1,14 @@
-import { Badge } from '@material-ui/core'
 import React, { useContext } from 'react'
+
 import { FiSettings } from 'react-icons/fi'
-import { MdOutlineNotificationsNone } from 'react-icons/md'
-import { RiMenuUnfoldLine, RiRefreshLine } from 'react-icons/ri'
-import { Context } from '../../context/Context'
+import { RiMenuUnfoldLine } from 'react-icons/ri'
+
+import {
+  Context,
+  ProfileInterface,
+  NotificationInterface,
+} from '../../context/Context'
+
 import { Button } from '../Button'
 import { Notification } from '../Notification'
 import { ProfileButton } from '../Profile/ProfileButton'
@@ -11,24 +16,9 @@ import { Tooltips } from '../Tooltip'
 
 import styles from './styles.module.scss'
 
-interface ProfileInterface {
-  id: number
-  userName: string
-  userFunction: string
-  userEmail: string
-  userImage: string
-}
-
-interface NotificationInterface {
-  id: number
-  userImage: string
-  userOwner: string
-  description: string
-  label: string
-}
 interface HeaderProps {
-  notificationObject: NotificationInterface[]
   profileObject: ProfileInterface
+  notificationObject: NotificationInterface[]
 }
 
 export default function Header({

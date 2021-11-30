@@ -54,7 +54,7 @@ export const Container = styled.div<ContainerProps>`
 
           .box {
             width: 100%;
-            height: 100%;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -65,7 +65,6 @@ export const Container = styled.div<ContainerProps>`
             .image {
               position: absolute;
               width: 100%;
-              height: 100%;
               display: flex;
               align-items: center;
               justify-content: center;

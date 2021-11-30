@@ -1,7 +1,179 @@
 .container {
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  overflow: hidden;
+
+  .content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 2.5rem;
+
+    .profileContainer {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      .image {
+        width: 100%;
+        padding: 10rem;
+        display: flex;
+        align-items: center;
+        border-radius: 2rem 2rem 0 0;
+        background: url("/assets/png/mockup.jpg") no-repeat center center;
+        background-size: cover;
+        filter: hue-rotate(25deg);
+      }
+
+      .profileImage {
+        position: absolute;
+        border: 10px solid var(--white-solid);
+        width: 15rem;
+        height: 15rem;
+        display: flex;
+        align-items: center;
+        background-size: cover !important;
+        border-radius: 50%;
+      }
+
+      .information {
+        width: 100%;
+        background: var(--white-solid);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 4rem 3rem;
+        border-radius: 0 0 2rem 2rem;
+
+        .function {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 0.5rem;
+
+          div {
+            transform: scale(0.85);
+
+            svg {
+              color: var(--light-gray-500-solid);
+            }
+
+            h1 {
+              margin-top: 0.75rem;
+            }
+
+            h4 {
+              color: var(--light-gray-500-solid);
+              letter-spacing: -0.5px;
+            }
+
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: column;
+            line-height: 1.75rem;
+          }
+        }
+
+        .socialMedia {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          gap: 1rem;
+
+          div {
+            display: flex;
+
+            svg {
+              width: 3rem;
+              height: 3rem;
+              padding: 0.75rem;
+              border-radius: 0.75rem;
+              background: var(--cian-solid);
+              color: var(--white-solid);
+
+              transition: all 0.3s ease-in-out;
+              cursor: pointer;
+
+              &:hover {
+                transform: scale(1.1);
+                background: var(--black-solid);
+                color: var(--white-solid);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .userInfo {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      align-items: flex-start;
+      justify-content: center;
+      grid-template-columns: 0.35fr 0.65fr;
+      border-radius: 2rem;
+      gap: 2.5rem;
+
+      .left {
+        width: 100%;
+        border-radius: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background: var(--cian-solid);
+        padding: 2.5rem;
+
+        .message {
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          flex-direction: column;
+          gap: 0.5rem;
+          color: var(--white-solid);
+
+          h4 {
+            line-height: 1.25rem;
+            letter-spacing: -0.5px;
+            font-size: 0.9rem;
+          }
+        }
+      }
+
+      .right {
+        width: 100%;
+        border-radius: 2rem;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 3rem;
+        background: var(--white-solid);
+
+        .userData {
+          height: 100%;
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          flex-direction: column;
+          gap: 1rem;
+
+          div {
+            h1 {
+              font-size: 1.35rem;
+              line-height: 1.75rem;
+            }
+          }
+        }
+      }
+    }
+  }
 }

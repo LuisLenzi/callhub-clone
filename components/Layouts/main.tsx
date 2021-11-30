@@ -8,6 +8,7 @@ import LeftBar from '../LeftBar'
 import { ChatButton } from '../Chat'
 
 import { Context } from '../../context/Context'
+import Breadcrumb from '../Breadcrumb'
 
 interface MainProps {
   children?: ReactNode
@@ -46,7 +47,10 @@ export default function Main({ children }: MainProps) {
           notificationObject={notificationObjectData}
         />
 
-        <section className={styles.content}>{children}</section>
+        <section className={styles.content}>
+          <Breadcrumb />
+          {children}
+        </section>
       </main>
 
       <Loading show={isLoading} />

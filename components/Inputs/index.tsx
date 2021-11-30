@@ -8,7 +8,7 @@ import { FiEye, FiEyeOff } from 'react-icons/fi'
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
   type?: string
-  label: string
+  label?: string
 }
 
 export default function Input({ name, type, label }: InputProps) {

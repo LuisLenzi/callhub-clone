@@ -20,6 +20,7 @@ interface DataProps {
 
 export default function App({ Component, pageProps }: AppProps) {
   const [data, setData] = useState({} as DataProps)
+  const [currentPage, setCurrentPage] = useState('Dashboard')
 
   useEffect(() => {
     typeof window !== 'undefined' && import('@lottiefiles/lottie-player')
@@ -36,6 +37,10 @@ export default function App({ Component, pageProps }: AppProps) {
 
   const [leftBarIsActive, setLeftBarIsActive] = useState(true)
 
+  function handleCurrentPage(page: string) {
+    setCurrentPage(page)
+  }
+
   function handleLeftBarActive() {
     leftBarIsActive ? setLeftBarIsActive(false) : setLeftBarIsActive(true)
   }
@@ -43,10 +48,12 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <Context.Provider
       value={{
+        currentPage,
         leftBarIsActive,
         profileObjectData: data.profileObjectData,
         leftBarObjectData: data.leftBarObjectData,
         notificationObjectData: data.notificationObjectData,
+        handleCurrentPage,
         handleLeftBarActive,
       }}
     >

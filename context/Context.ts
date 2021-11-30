@@ -27,11 +27,13 @@ export interface ProfileInterface {
 }
 
 type ContextProps = {
+  currentPage: string
+  leftBarIsActive: boolean
   profileObjectData: ProfileInterface
   leftBarObjectData: LeftBarInterface[]
   notificationObjectData: NotificationInterface[]
-  leftBarIsActive: boolean
   handleLeftBarActive: () => void
+  handleCurrentPage: (page: string) => void
 }
 
 export const Context = createContext({} as ContextProps)
