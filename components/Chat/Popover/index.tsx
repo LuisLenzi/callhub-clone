@@ -35,7 +35,7 @@ interface PopoverProps {
 
 const messagesQueue: Message[] = []
 
-const socket = io('https://chat-api-node.herokuapp.com')
+const socket = io('https://callhub-api.herokuapp.com')
 socket.on('new_message', (newMessage: Message) => {
   messagesQueue.push(newMessage)
 })
@@ -56,7 +56,7 @@ function PopoverComponent({ id, open, onClose, anchorEl }: PopoverProps) {
         messagesQueue.shift()
       }
     }, 1000)
-  }, [messages])
+  }, [])
 
   useEffect(() => {
     chatApi
@@ -65,6 +65,7 @@ function PopoverComponent({ id, open, onClose, anchorEl }: PopoverProps) {
         setMessages(response.data)
       })
       .catch((error) => {
+        console.log(error)
         setIsConnected(false)
       })
   }, [])
