@@ -35,7 +35,7 @@ interface PopoverProps {
 
 const messagesQueue: Message[] = []
 
-const socket = io('http://localhost:4000')
+const socket = io('https://chat-api-node.herokuapp.com')
 socket.on('new_message', (newMessage: Message) => {
   messagesQueue.push(newMessage)
 })
