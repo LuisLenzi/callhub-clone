@@ -11,7 +11,7 @@ import {
 
 import { Button } from '../Button'
 import { Notification } from '../Notification'
-import { ProfileButton } from '../Profile/ProfileButton'
+import { ProfileButton } from '../Profile'
 import { Tooltips } from '../Tooltip'
 
 import styles from './styles.module.scss'

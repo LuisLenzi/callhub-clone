@@ -11,6 +11,7 @@ import {
 
 import { useEffect, useState } from 'react'
 import { LeftBarApi, NotificationApi, ProfileApi } from '../services/api'
+import { AuthProvider } from '../context/Auth'
 
 interface DataProps {
   profileObjectData: ProfileInterface
@@ -57,7 +58,9 @@ export default function App({ Component, pageProps }: AppProps) {
         handleLeftBarActive,
       }}
     >
-      <Component {...pageProps} />
+      <AuthProvider>
+        <Component {...pageProps} />
+      </AuthProvider>
     </Context.Provider>
   )
 }

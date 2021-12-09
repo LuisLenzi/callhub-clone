@@ -91,25 +91,27 @@ export default function Profile() {
               <div className={styles.userData}>
                 <RiMapPinUserLine size={40} />
                 <h1>Informações</h1>
-                <div>
-                  <h1>Nome</h1>
-                  <h4>Augusto Pereira</h4>
-                </div>
-                <div>
-                  <h1>E-mail</h1>
-                  <h4>augusto.pereira@devlean.com.br</h4>
-                </div>
-                <div>
-                  <h1>Empresa</h1>
-                  <h4>Devlean</h4>
-                </div>
-                <div>
-                  <h1>Nível de Acesso</h1>
-                  <h4>Suporte</h4>
-                </div>
-                <div>
-                  <h1>Senha</h1>
-                  <h4>***********</h4>
+                <div className={styles.data}>
+                  <div>
+                    <h1>Nome</h1>
+                    <h4>Augusto Pereira</h4>
+                  </div>
+                  <div>
+                    <h1>E-mail</h1>
+                    <h4>augusto.pereira@devlean.com.br</h4>
+                  </div>
+                  <div>
+                    <h1>Empresa</h1>
+                    <h4>Devlean</h4>
+                  </div>
+                  <div>
+                    <h1>Nível de Acesso</h1>
+                    <h4>Suporte</h4>
+                  </div>
+                  <div>
+                    <h1>Senha</h1>
+                    <h4>***********</h4>
+                  </div>
                 </div>
               </div>
             </div>

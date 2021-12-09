@@ -1,0 +1,54 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0.5rem 0;
+  gap: 0.5rem;
+  border-top: 1px solid var(--light-gray-300-solid);
+
+  form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  textarea {
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    padding: 1rem;
+    line-height: 1rem;
+    resize: none;
+    font-weight: 300;
+    font-size: 0.9rem;
+    outline: none;
+    border: none;
+
+    &::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+    }
+  }
+
+  button {
+    animation: fadeIn .5s ease-in-out;
+    width: auto;
+    margin-right: 1rem;
+    margin-bottom: 0.25rem;
+    padding: 0.75rem !important;
+  }
+}
